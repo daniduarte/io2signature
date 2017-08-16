@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import { NavController, NavParams } from 'ionic-angular';
 // $IMPORTSTATEMENT
 
@@ -15,14 +16,19 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SignaturePage {
 
-  // @ViewChild(SignaturePad) public signaturePad : SignaturePad;
+  @ViewChild(SignaturePad) public signaturePad : SignaturePad
 
   public signaturePadOptions : Object = {
     'minWidth': 2,
-    'canvasWidth': 340,
-    'canvasHeight': 480
+    'canvasWidth': 300,
+    'canvasHeight': 200,
+    'dotSize': 0,
+    'throttle': 16
   };
-  public signatureImage : string;
+  
+  clearSignature() {
+    this.signaturePad.clear();
+  }
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
